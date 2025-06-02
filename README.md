@@ -1,76 +1,90 @@
-# Restassured-Restful-Booker
+# � RestAssured-Restful-Booker Automation Framework
 
-This project is a structured and cleanly designed test automation framework for testing the [Restful Booker API](https://restful-booker.herokuapp.com/) using **Rest Assured**, **Java**, and **TestNG**.
+[![Java](https://img.shields.io/badge/Java-17+-blue?logo=java)](https://java.com)
+[![RestAssured](https://img.shields.io/badge/RestAssured-5.3.0-brightgreen)](https://rest-assured.io)
+[![TestNG](https://img.shields.io/badge/TestNG-7.6.1-red?logo=testng)](https://testng.org)
+[![Maven](https://img.shields.io/badge/Maven-3.8.6-blueviolet?logo=apache-maven)](https://maven.apache.org)
 
-## ✅ Project Highlights
+A professional-grade test automation framework for validating the [Restful Booker API](https://restful-booker.herokuapp.com/) with comprehensive test coverage and robust architecture.
 
-- Clean and modular framework design following best practices.
-- Well-structured packages: endpoints, models, utilities, and tests.
-- Utilities for configuration management, test data generation, and response validation.
-- Tests implemented using **TestNG** and **Maven**.
+## 🌟 Key Features
 
-## 📂 Project Structure
+- **Modern Tech Stack**: Java 17+, RestAssured 5+, TestNG 7+
+- **CI/CD Ready**: Maven-based for seamless integration
+- **Smart Test Data**: Dynamic generation with Faker
+- **Centralized Validation**: Unified response assertions
+- **Configurable**: Environment-aware setup
+- **Postman Verified**: Manual tests available for comparison
 
+## 🏗️ Project Architecture
+
+```bash
 src/
 ├── main/
-│ ├── java/
-│ │ ├── api/
-│ │ │ └── endpoints/
-│ │ │ ├── AuthEndpoint.java
-│ │ │ ├── BookingEndpoint.java
-│ │ │ └── PingEndpoint.java
-│ │ ├── models/
-│ │ │ ├── AuthRequest.java
-│ │ │ ├── AuthResponse.java
-│ │ │ ├── Booking.java
-│ │ │ └── BookingDates.java
-│ │ └── utils/
-│ │ ├── ConfigManager.java
-│ │ ├── ResponseValidator.java
-│ │ └── TestDataGenerator.java
-│ └── resources/
-├── test/
-│ └── java/
-│ ├── base/
-│ │ └── BaseTest.java
-│ └── tests/
-│ ├── AuthTests.java
-│ └── BookingTests.java
+│   ├── java/
+│   │   ├── api/
+│   │   │   └── endpoints/        # API endpoint definitions
+│   │   │       ├── AuthEndpoint.java
+│   │   │       ├── BookingEndpoint.java
+│   │   │       └── PingEndpoint.java
+│   │   ├── models/               # Request/Response POJOs
+│   │   │   ├── AuthRequest.java
+│   │   │   ├── AuthResponse.java
+│   │   │   ├── Booking.java
+│   │   │   └── BookingDates.java
+│   │   └── utils/                # Reusable utilities
+│   │       ├── ConfigManager.java
+│   │       ├── ResponseValidator.java
+│   │       └── TestDataGenerator.java
+│   └── resources/                # Configuration files
+│       └── config.properties
+└── test/
+    └── java/
+        ├── base/                 # Test infrastructure
+        │   └── BaseTest.java
+        └── tests/                # Test implementations
+            ├── AuthTests.java
+            └── BookingTests.java
+🛠️ Prerequisites
+Java JDK 17+
 
-markdown
-Copy
-Edit
+Maven 3.8.6+
 
-## 🧪 Technologies Used
+IDE (IntelliJ IDEA or Eclipse)
 
-- Java
-- Rest Assured
-- TestNG
-- Maven
-- JSON
-- Eclipse or IntelliJ
+Postman (optional for manual verification)
 
-## 🚀 How to Run
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Hala-Eldaly/Restassured-Restful-Booker.git
-Open the project in your IDE (Eclipse or IntelliJ).
-
-Run the tests using Maven:
-
+🚀 Getting Started
+1. Clone the Repository
 bash
-Copy
-Edit
+git clone https://github.com/Hala-Eldaly/Restassured-Restful-Booker.git
+cd Restassured-Restful-Booker
+2. Build and Run Tests
+bash
 mvn clean test
-📌 Additional Notes
-Base URI and credentials are handled using ConfigManager.
+3. Generate Test Report
+bash
+mvn surefire-report:report
+🔍 Test Coverage
+Feature Area	Automated Tests	Manual Verification
+Authentication	✅	✅ [Postman]
+Booking Management	✅	✅ [Postman]
+Health Check	✅	✅ [Postman]
+📊 Postman Integration
+Complementary Postman collection available for manual verification:
+Run in Postman
 
-All response assertions are centralized in ResponseValidator.
-
-Fake test data is dynamically generated using TestDataGenerator.
-
-🧪 Postman API Tests
-All API endpoints were also tested manually using Postman to ensure correctness before automating. You can check the Postman test project here:
-
-🔗 RestfulBookerPostman_Project
+🧩 Key Components
+ConfigManager
+java
+// Example usage:
+String baseUrl = ConfigManager.getInstance().getBaseUrl();
+TestDataGenerator
+java
+// Generates randomized test data:
+Booking testBooking = TestDataGenerator.createTestBooking();
+ResponseValidator
+java
+// Standardized validation:
+ResponseValidator.validateStatusCode(response, 200);
+ResponseValidator.validateBookingData(response, expectedBooking);
